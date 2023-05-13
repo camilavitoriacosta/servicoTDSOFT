@@ -1,5 +1,7 @@
 package com.example.servicoRestFull.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.servicoRestFull.entidades.Erro;
+import com.example.servicoRestFull.entidades.Repositorio;
 import com.example.servicoRestFull.entidades.RepositorioSimplificado;
+import com.example.servicoRestFull.helpers.JsonHelper;
 import com.example.servicoRestFull.repositorios.RepositorioRepository;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -32,16 +36,13 @@ public class RepositorioController {
                         @ApiResponse(responseCode = "400", description = "ocorreu um erro na busca", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Erro.class)))
         })
         @GetMapping(path = "/find")
-        public ResponseEntity<Object> buscarPeloNome(
+        public ResponseEntity<List<Repositorio>> buscarPeloNome(
                         @RequestParam(required = true, name = "nome") String nome,
                         @RequestParam(required = false, name = "pagina", defaultValue = "1") int pagina,
                         @RequestParam(required = false, name = "por_pagina", defaultValue = "10") int por_pagina) {
 
-                System.out.println(repositorioRepository.buscarPorNome("teste"));
                 
-                RepositorioSimplificado repo = new RepositorioSimplificado("MDEwOlJlcG9zaXRvcnkxMDI3MDI1MA==",
-                                "facebook/react");
-                return ResponseEntity.status(HttpStatus.OK).body(repo);
+                return ResponseEntity.status(HttpStatus.OK).body(repositorioRepository.findByNome(nome));
 
                 // Erro erro = new Erro("Nome é obrigatório");
                 // return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(erro);
