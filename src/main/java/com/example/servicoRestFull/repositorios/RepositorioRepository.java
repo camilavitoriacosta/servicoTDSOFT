@@ -23,7 +23,13 @@ public class RepositorioRepository {
         return repositorios;
     }
 
-    public List<Repositorio> findByNome(String nome) {
-        return repositorios.stream().filter(r -> r.getName().equalsIgnoreCase(nome)).collect(Collectors.toList());
+    public List<Repositorio> findByNome(String nome, int pagina, int tamanhoPagina) {
+        int indexInicial = (pagina - 1) * tamanhoPagina;
+    
+        return repositorios.stream()
+            .filter(r -> r.getName().toLowerCase().contains(nome.toLowerCase()))
+            .skip(indexInicial)
+            .limit(tamanhoPagina)
+            .collect(Collectors.toList());
     }
 }

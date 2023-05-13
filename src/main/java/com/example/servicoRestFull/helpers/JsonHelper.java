@@ -15,7 +15,7 @@ public class JsonHelper {
 
         try {
             // Carrega o arquivo JSON em um objeto
-            InputStream inputStream = JsonHelper.class.getClassLoader().getResourceAsStream("repositoriesTeste.json");
+            InputStream inputStream = JsonHelper.class.getClassLoader().getResourceAsStream("repositories.json");
             Repositorios repositorios = objectMapper.readValue(inputStream, Repositorios.class);
             return repositorios.getRepositorios();
         } catch (JsonProcessingException e) {
