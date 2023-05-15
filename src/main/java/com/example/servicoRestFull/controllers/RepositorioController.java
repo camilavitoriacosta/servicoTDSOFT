@@ -7,11 +7,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.servicoRestFull.entidades.Erro;
+import com.example.servicoRestFull.entidades.Repositorio;
 import com.example.servicoRestFull.entidades.RepositorioSimplificado;
 import com.example.servicoRestFull.mappers.RepositorioMapper;
 import com.example.servicoRestFull.repositorios.RepositorioRepository;
@@ -24,7 +26,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 
 @RestController
 @CrossOrigin(origins = "*")
-@RequestMapping(path = { "" }, produces = { "application/json" })
+@RequestMapping(path = { "repos/" }, produces = { "application/json" })
 public class RepositorioController {
         @Autowired
         RepositorioRepository repositorioRepository;
@@ -47,10 +49,21 @@ public class RepositorioController {
                         Erro erro = new Erro("Nome é obrigatório");
                         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(erro);
                 }
+                
                 Collection<RepositorioSimplificado> repositorioSimplificados = repositorioMapper
                                 .repositoriosParaRepositoriosSimplificados(
                                                 repositorioRepository.findByNome(nome, pagina, por_pagina));
 
                 return ResponseEntity.status(HttpStatus.OK).body(repositorioSimplificados);
+        }
+
+        @Operation(summary = "obtém dados de um repositório específico")
+        @ApiResponses(value = {
+                        @ApiResponse(responseCode = "200", description = "busca realizada com sucesso", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Repositorio.class)))
+        })
+        @GetMapping(path = "/{repoId}")
+        public ResponseEntity<?> buscarPorId(@PathVariable String repoId){
+                Collection<Repositorio> repositorios = repositorioRepository.findById(repoId);
+                return ResponseEntity.status(HttpStatus.OK).body(repositorios);
         }
 }

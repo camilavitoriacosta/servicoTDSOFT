@@ -32,4 +32,8 @@ public class RepositorioRepository {
             .limit(tamanhoPagina)
             .collect(Collectors.toList());
     }
+
+    public List<Repositorio> findById(String id){
+        return repositorios.stream().filter(r -> r.getId().equals(id)).collect(Collectors.toList());
+    }
 }
