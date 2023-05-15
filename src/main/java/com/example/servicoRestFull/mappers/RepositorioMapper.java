@@ -13,5 +13,4 @@ public interface RepositorioMapper {
 
     public Collection<RepositorioSimplificado> repositoriosParaRepositoriosSimplificados(
             Collection<Repositorio> repositorios);
-
 }

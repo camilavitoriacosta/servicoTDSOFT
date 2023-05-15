@@ -1,18 +1,17 @@
 package com.example.servicoRestFull.helpers;
 
-import com.example.servicoRestFull.entidades.Repositorio;
+import com.example.servicoRestFull.entidades.RepositorioJson;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Repositorios {
     @JsonProperty("repositories")
-    private Repositorio[] repositorios;
+    private RepositorioJson[] repositorios;
 
-    public Repositorio[] getRepositorios() {
+    public RepositorioJson[] getRepositorios() {
         return repositorios;
     }
 
-    public void setRepositorios(Repositorio[] repositorios) {
+    public void setRepositorios(RepositorioJson[] repositorios) {
         this.repositorios = repositorios;
     }
-
 }

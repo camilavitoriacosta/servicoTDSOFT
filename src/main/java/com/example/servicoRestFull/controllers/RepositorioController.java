@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.servicoRestFull.entidades.Erro;
 import com.example.servicoRestFull.entidades.Repositorio;
+import com.example.servicoRestFull.entidades.RepositorioJson;
 import com.example.servicoRestFull.entidades.RepositorioSimplificado;
 import com.example.servicoRestFull.mappers.RepositorioMapper;
 import com.example.servicoRestFull.repositorios.RepositorioRepository;
@@ -49,7 +50,7 @@ public class RepositorioController {
                         Erro erro = new Erro("Nome é obrigatório");
                         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(erro);
                 }
-                
+
                 Collection<RepositorioSimplificado> repositorioSimplificados = repositorioMapper
                                 .repositoriosParaRepositoriosSimplificados(
                                                 repositorioRepository.findByNome(nome, pagina, por_pagina));
@@ -59,11 +60,11 @@ public class RepositorioController {
 
         @Operation(summary = "obtém dados de um repositório específico")
         @ApiResponses(value = {
-                        @ApiResponse(responseCode = "200", description = "busca realizada com sucesso", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Repositorio.class)))
+                        @ApiResponse(responseCode = "200", description = "busca realizada com sucesso", content = @Content(mediaType = "application/json", schema = @Schema(implementation = RepositorioJson.class)))
         })
         @GetMapping(path = "/{repoId}")
-        public ResponseEntity<?> buscarPorId(@PathVariable String repoId){
-                Collection<Repositorio> repositorios = repositorioRepository.findById(repoId);
-                return ResponseEntity.status(HttpStatus.OK).body(repositorios);
+        public ResponseEntity<?> buscarPorId(@PathVariable String repoId) {
+                Repositorio repositorio = repositorioRepository.findById(repoId);
+                return ResponseEntity.status(HttpStatus.OK).body(repositorio);
         }
 }

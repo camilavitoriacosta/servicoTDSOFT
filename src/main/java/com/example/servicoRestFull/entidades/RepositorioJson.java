@@ -2,7 +2,10 @@ package com.example.servicoRestFull.entidades;
 
 import java.time.LocalDateTime;
 
-public class Repositorio {
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true) 
+public class RepositorioJson {
     private String id;
     private int assignable_users;
     private String code_of_conduct;
@@ -39,7 +42,7 @@ public class Repositorio {
     private String name;
     private String name_with_owner;
     private String open_graph_image_url;
-    private Ator owner;
+    private String owner;
     private String primary_language;
     private LocalDateTime pushed_at;
     private int pull_requests;
@@ -343,11 +346,11 @@ public class Repositorio {
         this.open_graph_image_url = open_graph_image_url;
     }
 
-    public Ator getOwner() {
+    public String getOwner() {
         return owner;
     }
 
-    public void setOwner(Ator owner) {
+    public void setOwner(String owner) {
         this.owner = owner;
     }
 
