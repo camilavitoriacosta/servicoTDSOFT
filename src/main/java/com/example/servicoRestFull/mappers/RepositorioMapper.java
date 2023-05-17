@@ -4,13 +4,13 @@ import java.util.Collection;
 
 import org.mapstruct.Mapper;
 
-import com.example.servicoRestFull.entidades.Repositorio;
+import com.example.servicoRestFull.entidades.RepositorioJson;
 import com.example.servicoRestFull.entidades.RepositorioSimplificado;
 
 @Mapper(componentModel = "spring")
 public interface RepositorioMapper {
-    public RepositorioSimplificado repositorioParaRepositorioSimplificado(Repositorio repositorio);
+    public RepositorioSimplificado repositorioParaRepositorioSimplificado(RepositorioJson repositorio);
 
     public Collection<RepositorioSimplificado> repositoriosParaRepositoriosSimplificados(
-            Collection<Repositorio> repositorios);
+            Collection<RepositorioJson> repositorios);
 }

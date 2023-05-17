@@ -64,7 +64,7 @@ public class RepositorioController {
         })
         @GetMapping(path = "/{repoId}")
         public ResponseEntity<?> buscarPorId(@PathVariable String repoId) {
-                Repositorio repositorio = repositorioRepository.findById(repoId);
+                RepositorioJson repositorio = repositorioRepository.findById(repoId);
                 return ResponseEntity.status(HttpStatus.OK).body(repositorio);
         }
 }
