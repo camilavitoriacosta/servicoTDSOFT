@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.example.servicoRestFull.entidades.Repositorio;
@@ -11,10 +12,13 @@ import com.example.servicoRestFull.helpers.JsonHelperRepositorio;
 
 @Repository
 public class RepositorioRepository {
+    private AtoresRepository atoresRepository;
+
     private List<Repositorio> repositorios = new ArrayList<Repositorio>();
 
-    public RepositorioRepository() {
-        repositorios = new JsonHelperRepositorio().jsonParaRepositorios();
+    public RepositorioRepository(AtoresRepository atoresRepository) {
+        this.atoresRepository = atoresRepository;
+        repositorios = new JsonHelperRepositorio(this.atoresRepository).jsonParaRepositorios();
     }
 
     public List<Repositorio> findAll() {

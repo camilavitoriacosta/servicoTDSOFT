@@ -2,15 +2,17 @@ package com.example.servicoRestFull.entidades;
 
 import java.time.LocalDateTime;
 
-import com.example.servicoRestFull.helpers.AtorDeserializer;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Repositorio {
+    
     private String id;
+    
     private int assignable_users;
+    
+    @JsonProperty("code_of_conduct")
     private String code_of_conduct;
     private LocalDateTime created_at;
     private int database_id;
@@ -45,7 +47,7 @@ public class Repositorio {
     private String name;
     private String name_with_owner;
     private String open_graph_image_url;
-    @JsonDeserialize(using = AtorDeserializer.class)
+    // @JsonDeserialize(using = AtorDeserializer.class)
     @JsonProperty("owner")
     private Ator owner;
     private String primary_language;
