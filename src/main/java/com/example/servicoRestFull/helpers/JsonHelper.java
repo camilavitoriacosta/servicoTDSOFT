@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.example.servicoRestFull.entidades.Ator;
 import com.example.servicoRestFull.entidades.Repositorio;
@@ -15,6 +16,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
+@Service
 public class JsonHelper {
     @Autowired
     private AtoresRepository atoresRepository;
@@ -31,7 +33,7 @@ public class JsonHelper {
             List<Repositorio> repositorios = new ArrayList<Repositorio>();
             for (RepositorioJson repositorioJson : repositoriosJson.getRepositorios()) {
                 Ator owner = atoresRepository.findById(repositorioJson.getOwner());
-                // adicionar na lista de repositorios
+                repositorios.add(new Repositorio(repositorioJson, owner));
             }
 
             return repositorios;

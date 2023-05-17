@@ -55,6 +55,63 @@ public class Repositorio {
     private int vulnerability_alerts;
     private int watchers;
 
+    public Repositorio() {
+    }
+
+    public Repositorio(RepositorioJson repositorioJson, Ator owner) {
+        this.id = repositorioJson.getId();
+        this.assignable_users = repositorioJson.getAssignable_users();
+        this.code_of_conduct = repositorioJson.getCode_of_conduct();
+        this.created_at = repositorioJson.getCreated_at();
+        this.database_id = repositorioJson.getDatabase_id();
+        this.default_branch = repositorioJson.getDefault_branch();
+        this.delete_branch_on_merge = repositorioJson.isDelete_branch_on_merge();
+        this.description = repositorioJson.getDescription();
+        this.disk_usage = repositorioJson.getDisk_usage();
+        this.forks = repositorioJson.getForks();
+        this.has_issues_enabled = repositorioJson.isHas_issues_enabled();
+        this.has_projects_enabled = repositorioJson.isHas_projects_enabled();
+        this.has_wiki_enabled = repositorioJson.isHas_wiki_enabled();
+        this.homepage_url = repositorioJson.getHomepage_url();
+        this.is_archived = repositorioJson.isIs_archived();
+        this.is_blank_issues_enabled = repositorioJson.isIs_blank_issues_enabled();
+        this.is_disabled = repositorioJson.isIs_disabled();
+        this.is_empty = repositorioJson.isIs_empty();
+        this.is_fork = repositorioJson.isIs_fork();
+        this.is_in_organization = repositorioJson.isIs_in_organization();
+        this.is_locked = repositorioJson.isIs_locked();
+        this.is_mirror = repositorioJson.isIs_mirror();
+        this.is_private = repositorioJson.isIs_private();
+        this.is_security_policy_enabled = repositorioJson.isIs_security_policy_enabled();
+        this.is_template = repositorioJson.isIs_template();
+        this.is_user_configuration_repository = repositorioJson.isIs_user_configuration_repository();
+        this.issues = repositorioJson.getIssues();
+        this.labels = repositorioJson.getLabels();
+        this.languages = repositorioJson.getLanguages();
+        this.license_info = repositorioJson.getLicense_info();
+        this.mentionable_users = repositorioJson.getMentionable_users();
+        this.merge_commit_allowed = repositorioJson.isMerge_commit_allowed();
+        this.milestones = repositorioJson.getMilestones();
+        this.name = repositorioJson.getName();
+        this.name_with_owner = repositorioJson.getName_with_owner();
+        this.open_graph_image_url = repositorioJson.getOpen_graph_image_url();
+        this.owner = owner;
+        this.primary_language = repositorioJson.getPrimary_language();
+        this.pushed_at = repositorioJson.getPushed_at();
+        this.pull_requests = repositorioJson.getPull_requests();
+        this.rebase_merge_allowed = repositorioJson.isRebase_merge_allowed();
+        this.releases = repositorioJson.getReleases();
+        this.repository_topics = repositorioJson.getRepository_topics();
+        this.squash_merge_allowed = repositorioJson.isSquash_merge_allowed();
+        this.stargazers = repositorioJson.getStargazers();
+        this.tags = repositorioJson.getTags();
+        this.updated_at = repositorioJson.getUpdated_at();
+        this.url = repositorioJson.getUrl();
+        this.uses_custom_open_graph_image = repositorioJson.isUses_custom_open_graph_image();
+        this.vulnerability_alerts = repositorioJson.getVulnerability_alerts();
+        this.watchers = repositorioJson.getWatchers();
+    }
+
     public String getId() {
         return id;
     }
@@ -103,7 +160,7 @@ public class Repositorio {
         this.default_branch = default_branch;
     }
 
-    public boolean isDelete_branch_on_merge() {
+    public boolean get_is_delete_branch_on_merge() {
         return delete_branch_on_merge;
     }
 
@@ -135,7 +192,7 @@ public class Repositorio {
         this.forks = forks;
     }
 
-    public boolean isHas_issues_enabled() {
+    public boolean getHas_issues_enabled() {
         return has_issues_enabled;
     }
 
@@ -143,7 +200,7 @@ public class Repositorio {
         this.has_issues_enabled = has_issues_enabled;
     }
 
-    public boolean isHas_projects_enabled() {
+    public boolean getHas_projects_enabled() {
         return has_projects_enabled;
     }
 
@@ -151,7 +208,7 @@ public class Repositorio {
         this.has_projects_enabled = has_projects_enabled;
     }
 
-    public boolean isHas_wiki_enabled() {
+    public boolean getHas_wiki_enabled() {
         return has_wiki_enabled;
     }
 
@@ -167,7 +224,7 @@ public class Repositorio {
         this.homepage_url = homepage_url;
     }
 
-    public boolean isIs_archived() {
+    public boolean getIs_archived() {
         return is_archived;
     }
 
@@ -175,7 +232,7 @@ public class Repositorio {
         this.is_archived = is_archived;
     }
 
-    public boolean isIs_blank_issues_enabled() {
+    public boolean getIs_blank_issues_enabled() {
         return is_blank_issues_enabled;
     }
 
@@ -183,7 +240,7 @@ public class Repositorio {
         this.is_blank_issues_enabled = is_blank_issues_enabled;
     }
 
-    public boolean isIs_disabled() {
+    public boolean getIs_disabled() {
         return is_disabled;
     }
 
@@ -191,7 +248,7 @@ public class Repositorio {
         this.is_disabled = is_disabled;
     }
 
-    public boolean isIs_empty() {
+    public boolean getIs_empty() {
         return is_empty;
     }
 
@@ -199,7 +256,7 @@ public class Repositorio {
         this.is_empty = is_empty;
     }
 
-    public boolean isIs_fork() {
+    public boolean getIs_fork() {
         return is_fork;
     }
 
@@ -207,7 +264,7 @@ public class Repositorio {
         this.is_fork = is_fork;
     }
 
-    public boolean isIs_in_organization() {
+    public boolean getIs_in_organization() {
         return is_in_organization;
     }
 
@@ -215,7 +272,7 @@ public class Repositorio {
         this.is_in_organization = is_in_organization;
     }
 
-    public boolean isIs_locked() {
+    public boolean getIs_locked() {
         return is_locked;
     }
 
@@ -223,7 +280,7 @@ public class Repositorio {
         this.is_locked = is_locked;
     }
 
-    public boolean isIs_mirror() {
+    public boolean getIs_mirror() {
         return is_mirror;
     }
 
@@ -231,7 +288,7 @@ public class Repositorio {
         this.is_mirror = is_mirror;
     }
 
-    public boolean isIs_private() {
+    public boolean getIs_private() {
         return is_private;
     }
 
@@ -239,7 +296,7 @@ public class Repositorio {
         this.is_private = is_private;
     }
 
-    public boolean isIs_security_policy_enabled() {
+    public boolean getIs_security_policy_enabled() {
         return is_security_policy_enabled;
     }
 
@@ -247,7 +304,7 @@ public class Repositorio {
         this.is_security_policy_enabled = is_security_policy_enabled;
     }
 
-    public boolean isIs_template() {
+    public boolean getIs_template() {
         return is_template;
     }
 
@@ -255,7 +312,7 @@ public class Repositorio {
         this.is_template = is_template;
     }
 
-    public boolean isIs_user_configuration_repository() {
+    public boolean getIs_user_configuration_repository() {
         return is_user_configuration_repository;
     }
 
@@ -303,7 +360,7 @@ public class Repositorio {
         this.mentionable_users = mentionable_users;
     }
 
-    public boolean isMerge_commit_allowed() {
+    public boolean getMerge_commit_allowed() {
         return merge_commit_allowed;
     }
 
@@ -375,7 +432,7 @@ public class Repositorio {
         this.pull_requests = pull_requests;
     }
 
-    public boolean isRebase_merge_allowed() {
+    public boolean getRebase_merge_allowed() {
         return rebase_merge_allowed;
     }
 
@@ -399,7 +456,7 @@ public class Repositorio {
         this.repository_topics = repository_topics;
     }
 
-    public boolean isSquash_merge_allowed() {
+    public boolean getSquash_merge_allowed() {
         return squash_merge_allowed;
     }
 
@@ -439,7 +496,7 @@ public class Repositorio {
         this.url = url;
     }
 
-    public boolean isUses_custom_open_graph_image() {
+    public boolean getUses_custom_open_graph_image() {
         return uses_custom_open_graph_image;
     }
 

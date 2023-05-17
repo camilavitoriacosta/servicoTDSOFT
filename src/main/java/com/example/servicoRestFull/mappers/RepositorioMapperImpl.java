@@ -6,7 +6,6 @@ import java.util.Collection;
 import org.springframework.stereotype.Component;
 
 import com.example.servicoRestFull.entidades.Repositorio;
-import com.example.servicoRestFull.entidades.RepositorioJson;
 import com.example.servicoRestFull.entidades.RepositorioSimplificado;
 
 @Component
