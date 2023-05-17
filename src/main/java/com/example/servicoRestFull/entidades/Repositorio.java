@@ -7,62 +7,157 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Repositorio {
-    
+    @JsonProperty("id")
     private String id;
-    
+
+    @JsonProperty("assignable_users")
     private int assignable_users;
-    
+
     @JsonProperty("code_of_conduct")
     private String code_of_conduct;
+
+    @JsonProperty("created_at")
     private LocalDateTime created_at;
+
+    @JsonProperty("database_id")
     private int database_id;
+
+    @JsonProperty("default_branch")
     private String default_branch;
+
+    @JsonProperty("delete_branch_on_merge")
     private boolean delete_branch_on_merge;
+
+    @JsonProperty("description")
     private String description;
+
+    @JsonProperty("disk_usage")
     private int disk_usage;
+
+    @JsonProperty("forks")
     private int forks;
+
+    @JsonProperty("has_issues_enabled")
     private boolean has_issues_enabled;
+
+    @JsonProperty("has_projects_enabled")
     private boolean has_projects_enabled;
+
+    @JsonProperty("has_wiki_enabled")
     private boolean has_wiki_enabled;
+
+    @JsonProperty("homepage_url")
     private String homepage_url;
+
+    @JsonProperty("is_archived")
     private boolean is_archived;
+
+    @JsonProperty("is_blank_issues_enabled")
     private boolean is_blank_issues_enabled;
+
+    @JsonProperty("is_disabled")
     private boolean is_disabled;
+
+    @JsonProperty("is_empty")
     private boolean is_empty;
+
+    @JsonProperty("is_fork")
     private boolean is_fork;
+
+    @JsonProperty("is_in_organization")
     private boolean is_in_organization;
+
+    @JsonProperty("is_locked")
     private boolean is_locked;
+
+    @JsonProperty("is_mirror")
     private boolean is_mirror;
+
+    @JsonProperty("is_private")
     private boolean is_private;
+
+    @JsonProperty("is_security_policy_enabled")
     private boolean is_security_policy_enabled;
+
+    @JsonProperty("is_template")
     private boolean is_template;
+
+    @JsonProperty("is_user_configuration_repository")
     private boolean is_user_configuration_repository;
+
+    @JsonProperty("issues")
     private int issues;
+
+    @JsonProperty("labels")
     private int labels;
+
+    @JsonProperty("languages")
     private String languages;
+
+    @JsonProperty("license_info")
     private String license_info;
+
+    @JsonProperty("mentionable_users")
     private int mentionable_users;
+
+    @JsonProperty("merge_commit_allowed")
     private boolean merge_commit_allowed;
+
+    @JsonProperty("milestones")
     private int milestones;
+
+    @JsonProperty("name")
     private String name;
+
+    @JsonProperty("name_with_owner")
     private String name_with_owner;
+
+    @JsonProperty("open_graph_image_url")
     private String open_graph_image_url;
-    // @JsonDeserialize(using = AtorDeserializer.class)
+
     @JsonProperty("owner")
     private Ator owner;
+
+    @JsonProperty("primary_language")
     private String primary_language;
+
+    @JsonProperty("pushed_at")
     private LocalDateTime pushed_at;
+
+    @JsonProperty("pull_requests")
     private int pull_requests;
+
+    @JsonProperty("rebase_merge_allowed")
     private boolean rebase_merge_allowed;
+
+    @JsonProperty("releases")
     private int releases;
+
+    @JsonProperty("repository_topics")
     private String repository_topics;
+
+    @JsonProperty("squash_merge_allowed")
     private boolean squash_merge_allowed;
+
+    @JsonProperty("stargazers")
     private int stargazers;
+
+    @JsonProperty("tags")
     private int tags;
+
+    @JsonProperty("updated_at")
     private LocalDateTime updated_at;
+
+    @JsonProperty("url")
     private String url;
+
+    @JsonProperty("uses_custom_open_graph_image")
     private boolean uses_custom_open_graph_image;
+
+    @JsonProperty("vulnerability_alerts")
     private int vulnerability_alerts;
+
+    @JsonProperty("watchers")
     private int watchers;
 
     public String getId() {

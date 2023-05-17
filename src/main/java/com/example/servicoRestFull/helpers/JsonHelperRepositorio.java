@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 import com.example.servicoRestFull.entidades.Repositorio;
 import com.example.servicoRestFull.repositorios.AtoresRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
@@ -25,6 +26,7 @@ public class JsonHelperRepositorio {
 
     public List<Repositorio> jsonParaRepositorios() {
         ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         objectMapper.registerModule(new JavaTimeModule());
 
         try {
