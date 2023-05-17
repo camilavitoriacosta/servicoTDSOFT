@@ -1,8 +1,10 @@
 package com.example.servicoRestFull.helpers;
 
 import com.example.servicoRestFull.entidades.Ator;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Atores {
     @JsonProperty("actors")
     private Ator[] actores;

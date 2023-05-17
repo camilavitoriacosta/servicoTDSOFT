@@ -1,29 +1,27 @@
 package com.example.servicoRestFull.repositorios;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Repository;
 
-import com.example.servicoRestFull.entidades.RepositorioJson;
-import com.example.servicoRestFull.helpers.JsonHelper;
+import com.example.servicoRestFull.entidades.Repositorio;
+import com.example.servicoRestFull.helpers.JsonHelperRepositorio;
 
 @Repository
 public class RepositorioRepository {
-    private List<RepositorioJson> repositorios = new ArrayList<RepositorioJson>();
+    private List<Repositorio> repositorios = new ArrayList<Repositorio>();
 
     public RepositorioRepository() {
-        repositorios = new ArrayList<>(
-                Arrays.asList(new JsonHelper().jsonParaRepositorios()));
+        repositorios = new JsonHelperRepositorio().jsonParaRepositorios();
     }
 
-    public List<RepositorioJson> findAll() {
+    public List<Repositorio> findAll() {
         return repositorios;
     }
 
-    public List<RepositorioJson> findByNome(String nome, int pagina, int tamanhoPagina) {
+    public List<Repositorio> findByNome(String nome, int pagina, int tamanhoPagina) {
         int indexInicial = (pagina - 1) * tamanhoPagina;
 
         return repositorios.stream()
@@ -33,7 +31,7 @@ public class RepositorioRepository {
                 .collect(Collectors.toList());
     }
 
-    public RepositorioJson findById(String id) {
+    public Repositorio findById(String id) {
         return repositorios.stream().filter(r -> r.getId().equals(id)).findFirst().orElse(null);
     }
 }

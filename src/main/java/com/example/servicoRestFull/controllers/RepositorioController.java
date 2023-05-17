@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.servicoRestFull.entidades.Erro;
 import com.example.servicoRestFull.entidades.Repositorio;
-import com.example.servicoRestFull.entidades.RepositorioJson;
 import com.example.servicoRestFull.entidades.RepositorioSimplificado;
 import com.example.servicoRestFull.mappers.RepositorioMapper;
 import com.example.servicoRestFull.repositorios.RepositorioRepository;
@@ -60,11 +59,11 @@ public class RepositorioController {
 
         @Operation(summary = "obtém dados de um repositório específico")
         @ApiResponses(value = {
-                        @ApiResponse(responseCode = "200", description = "busca realizada com sucesso", content = @Content(mediaType = "application/json", schema = @Schema(implementation = RepositorioJson.class)))
+                        @ApiResponse(responseCode = "200", description = "busca realizada com sucesso", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Repositorio.class)))
         })
         @GetMapping(path = "/{repoId}")
         public ResponseEntity<?> buscarPorId(@PathVariable String repoId) {
-                RepositorioJson repositorio = repositorioRepository.findById(repoId);
+                Repositorio repositorio = repositorioRepository.findById(repoId);
                 return ResponseEntity.status(HttpStatus.OK).body(repositorio);
         }
 }

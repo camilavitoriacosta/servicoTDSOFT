@@ -1,5 +1,8 @@
 package com.example.servicoRestFull.entidades;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Ator {
     private String id;
     private String type;
