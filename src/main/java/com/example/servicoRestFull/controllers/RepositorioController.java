@@ -1,9 +1,6 @@
 package com.example.servicoRestFull.controllers;
 
-import java.util.Collection;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,11 +9,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.servicoRestFull.controllers.dto.ResponseDTO;
 import com.example.servicoRestFull.entidades.Erro;
 import com.example.servicoRestFull.entidades.Repositorio;
 import com.example.servicoRestFull.entidades.RepositorioSimplificado;
-import com.example.servicoRestFull.mappers.RepositorioMapper;
-import com.example.servicoRestFull.repositorios.RepositorioRepository;
+import com.example.servicoRestFull.servicos.RepositorioService;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -29,10 +26,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 @RequestMapping(path = { "repos/" }, produces = { "application/json" })
 public class RepositorioController {
         @Autowired
-        RepositorioRepository repositorioRepository;
-
-        @Autowired
-        RepositorioMapper repositorioMapper;
+        RepositorioService repositorioService;
 
         @Operation(summary = "Permite a busca por repositorios cadastrados")
         @ApiResponses(value = {
@@ -45,16 +39,9 @@ public class RepositorioController {
                         @RequestParam(required = false, name = "pagina", defaultValue = "1") int pagina,
                         @RequestParam(required = false, name = "por_pagina", defaultValue = "10") int por_pagina) {
 
-                if (nome == null || nome.trim() == "") {
-                        Erro erro = new Erro("Nome é obrigatório");
-                        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(erro);
-                }
-
-                Collection<RepositorioSimplificado> repositorioSimplificados = repositorioMapper
-                                .repositoriosParaRepositoriosSimplificados(
-                                                repositorioRepository.findByNome(nome, pagina, por_pagina));
-
-                return ResponseEntity.status(HttpStatus.OK).body(repositorioSimplificados);
+                ResponseDTO<?> resposta = repositorioService.buscarPeloNome(nome, pagina, por_pagina);
+                return ResponseEntity.status(resposta.getStatusCode())
+                                .body(resposta.getResposta());
         }
 
         @Operation(summary = "obtém dados de um repositório específico")
@@ -63,7 +50,8 @@ public class RepositorioController {
         })
         @GetMapping(path = "/{repoId}")
         public ResponseEntity<?> buscarPorId(@PathVariable String repoId) {
-                Repositorio repositorio = repositorioRepository.findById(repoId);
-                return ResponseEntity.status(HttpStatus.OK).body(repositorio);
+                ResponseDTO<?> resposta = repositorioService.buscarPorId(repoId);
+                return ResponseEntity.status(resposta.getStatusCode())
+                                .body(resposta.getResposta());
         }
 }
